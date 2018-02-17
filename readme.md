@@ -2,13 +2,12 @@
 # How to do Multi-temporal Land Cover Classification without Satellite Data
 
 Random sampling of training and testing data is common practice in machine learning.
-However, the data of Land Cover Classification tasks is often spatially corellated.
-This correlation introduces a dependence between randomly sampled training and testing dataset.
+However, Land Cover Classification data is often spatially corellated.
+This correlation introduces a dependence between training and testing datasets if these are randomly sampled from a common source.
 
-This notebook illustrates this issue by achieving **99% accuracies** on an originally multi-temporal land cover classification challenge **without using any satellite reflectance data**.
+This notebook illustrates this issue by achieving **99% accuracies** on an originally multi-temporal land cover classification task **without using any satellite reflectance data**.
 
 This is an example on data of the [**Time Series Land Cover Classification Challenge (_TiSeLaC_)**](https://sites.google.com/site/dinoienco/tiselc), organized in conjunction of [**ECML-PKDD 2017**](http://ecmlpkdd2017.ijs.si/).
-
 
 
 ```python
