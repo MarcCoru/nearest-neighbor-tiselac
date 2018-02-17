@@ -9,6 +9,8 @@ This notebook illustrates this issue by achieving **99% accuracies** on an origi
 
 This is an example on data of the [**Time Series Land Cover Classification Challenge (_TiSeLaC_)**](https://sites.google.com/site/dinoienco/tiselc), organized in conjunction of [**ECML-PKDD 2017**](http://ecmlpkdd2017.ijs.si/).
 
+## Nearest Neighbor Classification
+
 
 ```python
 import pandas as pd
@@ -16,7 +18,7 @@ import numpy as np
 import sklearn.metrics as skmetrics
 ```
 
-## Load training data
+### Load training data
 
 Download and load training point coordinates (`coord_training.txt`) and labels (`training_class.txt`)
 
@@ -54,7 +56,7 @@ print(y_train[0:10])
     [ 6.  1.  6.  3.  3.  5.  3.  9.  7.  4.]
 
 
-## Create Tree to find K=1 Nearest Neighbors
+### Create Tree to find K=1 Nearest Neighbors
 
 
 ```python
@@ -63,14 +65,14 @@ from sklearn.neighbors import BallTree
 tree = BallTree(coord_train, leaf_size=2) 
 ```
 
-## Load testing data coordinates
+### Load testing data coordinates
 
 
 ```python
 coord_test = np.array(pd.read_csv("coord_test.dat",header=-1))
 ```
 
-## Get index of the closest training points to the respective test points
+### Get index of the closest training points to the respective test points
 
 The tree was built based on the training coordinates.
 
@@ -79,14 +81,14 @@ The tree was built based on the training coordinates.
 dist, ind = tree.query(coord_test, k=1)
 ```
 
-## Get the class label of the closest training point
+### Get the class label of the closest training point
 
 
 ```python
 y_pred = np.array(y_train)[ind].squeeze()
 ```
 
-## Load ground truth labels and compare with predicted labels
+### Load ground truth labels and compare with predicted labels
 
 
 ```python
@@ -112,7 +114,7 @@ print(y_pred[0:15])
     [ 3.  2.  1.  4.  4.  7.  4.  4.  4.  3.  3.  5.  5.  4.  3.]
 
 
-## Quantitative accuracy evaluation
+### Quantitative accuracy evaluation
 
 
 ```python
